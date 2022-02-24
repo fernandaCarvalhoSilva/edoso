@@ -162,7 +162,6 @@ export default function App() {
     const saveNewApp = async (apps: string, menuItems: MenuItems[]) => {
       try {
         const app = params.params.app;
-        console.log(app.packageName);
         let selectedApps: MenuItems[] = [];
         if (apps) {
           const loadedApps = JSON.parse(apps) as Array<MenuItems>;

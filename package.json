@@ -39,7 +39,6 @@
     "react-native-gesture-handler": "^2.1.1",
     "react-native-image-picker": "^4.7.1",
     "react-native-installed-application": "^1.0.6",
-    "react-native-notification-sounds": "^0.5.4",
     "react-native-push-notification": "^8.1.1",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-safe-area-view": "^1.1.1",
