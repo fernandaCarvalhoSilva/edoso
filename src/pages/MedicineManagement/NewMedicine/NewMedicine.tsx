@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CheckBox, Icon } from "react-native-elements";
+import { Icon } from "react-native-elements";
 import ImagePicker from "../../../components/CustomImagePicker/CustomImagePicker";
 import {
   Text,
@@ -21,22 +21,10 @@ import CustomDateTimePicker from "../../../components/CustomDateTimePicker/Custo
 import {
   createTriggerNotification,
   createChannel,
+  getTriggerNotifications,
 } from "../../../utils/notifications/notifications";
-import notifee, {
-  AndroidImportance,
-  AndroidCategory,
-} from "@notifee/react-native";
-
-export type RootStackParamList = {
-  ListMedicine: {};
-};
-
-interface MedicineProps {
-  name: string;
-  dateTimeNotification: Date;
-  imageUri: string;
-  repeatAlarm: number | undefined;
-}
+import { AndroidImportance, AndroidCategory } from "@notifee/react-native";
+import { MedicineProps, RootStackParamList } from "../../../utils/stack/stack";
 
 const NewMedicine = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
@@ -74,7 +62,6 @@ const NewMedicine = () => {
       const oldMedicine = data
         ? (JSON.parse(data) as Array<MedicineProps>)
         : [];
-
       const newMedicine = [medicine];
 
       await AsyncStorage.setItem(
@@ -88,19 +75,24 @@ const NewMedicine = () => {
 
   async function handleSave() {
     try {
-      if (
-        selectedDateTime !== undefined &&
-        name !== ""
-      ) {
+      if (selectedDateTime !== undefined && name !== "") {
+        await createChannel();
+        const reminder = createReminder();
+        await createTriggerNotification(
+          reminder,
+          selectedDateTime,
+          repeatAlarm
+        );
+        const medicineIds = await getTriggersIds();
+
         await saveMedicine({
+          triggerIds: medicineIds,
           dateTimeNotification: selectedDateTime,
           name: name,
           imageUri: image!,
           repeatAlarm: repeatAlarm,
         });
-        await createChannel();
-        const reminder = createReminder();
-        createTriggerNotification(reminder, selectedDateTime, repeatAlarm);
+        goBack();
       } else {
         Alert.alert("Não foi possível salvar");
       }
@@ -109,14 +101,29 @@ const NewMedicine = () => {
     }
   }
 
+  async function getTriggersIds() {
+    const savedNotifications = await getTriggerNotifications();
+    const filteredNotifications = (await savedNotifications).filter(
+      (not) => not.notification.data?.id === name
+    );
+    const medicineIds = filteredNotifications.reduce((results: string[], item) => {
+      if (item.notification.id) results.push(item.notification.id)
+      return results
+  }, [])
+    return medicineIds;
+  }
+
   const createReminder = () => {
     const channelId = "custom-sound";
     const reminderNotification = {
       title: "Hora de tomar o remédio",
       body: `Está na hora de tomar o remédio ${name}`,
+      data: {
+        id: name,
+      },
       android: {
         channelId,
-        largeIcon: require('../../../assets/medicine-icon.png'),
+        largeIcon: require("../../../assets/medicine-icon.png"),
         category: AndroidCategory.CALL,
         importance: AndroidImportance.HIGH,
         actions: [
@@ -179,14 +186,18 @@ const NewMedicine = () => {
               onChangeText={handleInputChange}
             />
 
-            <TextInput
-              style={Styles.input}
-              placeholder="Horário de tomar o remédio"
-              value={`${
-                !selectedDateTime ? "" : format(selectedDateTime, "HH:mm")
-              }`}
-              onFocus={() => setShowTimePicker(true)}
-            />
+            <TouchableOpacity
+              style={Styles.datePickerInput}
+              onPress={() => setShowTimePicker(true)}
+            >
+              <Text style={Styles.datePickerText}>
+                {`${
+                  !selectedDateTime
+                    ? "Horário de tomar o remédio"
+                    : format(selectedDateTime, "HH:mm")
+                }`}
+              </Text>
+            </TouchableOpacity>
 
             <TextInput
               keyboardType="numeric"

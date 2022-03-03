@@ -14,71 +14,9 @@ import {Icon} from 'react-native-elements';
 import {useRoute, RouteProp, useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
 import CustomModal from '../../../components/CustomModal/CustomModal';
-import * as Contact from 'react-native-contacts';
+import * as Contacts from 'react-native-contacts';
 import {StackNavigationProp} from '@react-navigation/stack';
-
-export type RootStackParamList = {
-  Contacts: {};
-  NewContact: {param: string; contact: Contact};
-};
-
-interface EmailAddress {
-  label: string;
-  email: string;
-}
-
-interface PhoneNumber {
-  id: string;
-  label: string;
-  number: string;
-}
-
-interface PostalAddress {
-  label: string;
-  formattedAddress: string;
-  street: string;
-  pobox: string;
-  neighborhood: string;
-  city: string;
-  region: string;
-  state: string;
-  postCode: string;
-  country: string;
-}
-
-interface InstantMessageAddress {
-  username: string;
-  service: string;
-}
-
-interface Birthday {
-  day: number;
-  month: number;
-  year: number;
-}
-
-interface Contact {
-  recordID: string;
-  rawContactId: string;
-  backTitle: string;
-  company: string | null;
-  emailAddresses: EmailAddress[];
-  displayName: string;
-  familyName: string;
-  givenName: string;
-  middleName: string;
-  jobTitle: string;
-  phoneNumbers: PhoneNumber[];
-  hasThumbnail: boolean;
-  thumbnailPath: string;
-  postalAddresses: PostalAddress[];
-  prefix: string;
-  suffix: string;
-  department: string;
-  birthday: Birthday;
-  imAddresses: InstantMessageAddress[];
-  note: string;
-}
+import {Contact, RootStackParamList} from '../../../utils/stack/stack';
 const ShowContact = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
@@ -98,7 +36,7 @@ const ShowContact = () => {
   useEffect(() => {
     const loadContact = async () => {
       let phoneNumber = params.params.selectedContact.phoneNumbers[0].number;
-      const photo = await Contact.getPhotoForId(
+      const photo = await Contacts.getPhotoForId(
         params.params.selectedContact.recordID,
       );
       if (phoneNumber.includes('+55 ')) {
@@ -162,8 +100,8 @@ const ShowContact = () => {
 
   async function deleteContact() {
     if (contact) {
-      Contact.deleteContact(contact).then(() => {
-        navigation.navigate('Contacts', {});
+      Contacts.deleteContact(contact).then(() => {
+        navigation.navigate('Contacts', {isEmergency: false});
       });
     }
   }

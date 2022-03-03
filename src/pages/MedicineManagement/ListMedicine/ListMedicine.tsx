@@ -7,21 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Icon} from 'react-native-elements';
 import {format, parseISO} from 'date-fns';
 import {StackNavigationProp} from '@react-navigation/stack';
-
-export type RootStackParamList = {
-  NewMedicine: {};
-  ShowMedicine: MedicineProps;
-};
-
-interface MedicineProps {
-  name: string;
-  dateTimeNotification: Date;
-  imageUri: string;
-  initDate: Date;
-  endDate: Date | number;
-  constantUse: boolean;
-  repeatAlarm: number;
-}
+import {MedicineProps, RootStackParamList} from '../../../utils/stack/stack';
 
 const ListMedicine = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
@@ -64,7 +50,7 @@ const ListMedicine = () => {
           <Icon
             name={'plus-circle'}
             type={'font-awesome-5'}
-            color="#D3D3D3"
+            color="white"
             iconStyle={styles.icon}
             tvParallaxProperties={undefined}
           />

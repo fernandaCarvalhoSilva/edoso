@@ -1,19 +1,19 @@
-import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {
   Image,
   ImageURISource,
-  Linking,
   Text,
   TouchableOpacity,
 } from 'react-native';
 import {Card, Icon} from 'react-native-elements';
-import SendIntentAndroid from 'react-native-send-intent';
 import CustomModal from '../CustomModal/CustomModal';
-
+import {handleApps, redirectToPlayStore} from '../../utils/apps/MenuApps'
 import {Styles} from './Menu.style';
+import { useNavigation } from '@react-navigation/native';
+import {RootStackParamList} from '../../utils/stack/stack';
+
 interface Menu {
   iconName: string;
   iconType: string;
@@ -22,67 +22,38 @@ interface Menu {
   url: string;
   urlType: string;
   params?: Object;
+  toogleVoiceRecord: Function;
 }
 
-export type RootStackParamList = {
-  Camera: {zoomMode: boolean};
-  NewContact: {};
-  Contacts: {};
-  MoreApps: {};
-  ListMedicine: {};
-  EmergencyContacts: {};
-  Settings: {};
-};
 const Menu = (Props: Menu) => {
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
-  const [installAppModal, setInstallAppModal] = useState(false);
+  const [appModal, setOpenAppModal] = useState(false);
   const [packageName, setPackageName] = useState('');
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
-  const handleToogleApps = (
+  const toogleApps = (
     url: any,
     urlType: string,
     componentParams: Object | undefined,
   ) => {
-    switch (urlType) {
-      case 'intent':
-        SendIntentAndroid.openApp(url, {}).then(result => {
-          if (!result) {
-            setInstallAppModal(true);
-            setPackageName(url);
-          }
-        });
-        break;
-      case 'component':
-        navigation.navigate(url, componentParams);
-        break;
-      case 'url':
-        Linking.openURL(url);
-        break;
-      default:
-        break;
+    setPackageName(url);
+    if (urlType === 'voiceRecord') {
+      Props.toogleVoiceRecord();
+      return;
     }
-  };
-
-  const redirectToPlayStore = () => {
-    const storeUrl = `https://play.google.com/store/apps/details?id=${packageName}`;
-    Linking.canOpenURL(storeUrl)
-      .then(supported => {
-        if (!supported) {
-          setInstallAppModal(true);
-        } else {
-          return Linking.openURL(storeUrl);
-        }
-      })
-      .catch(err => console.log(err));
+    if (urlType === 'component') {
+      navigation.navigate(url, componentParams);
+    }
+    const openModalApp = handleApps(url, urlType);
+    setOpenAppModal(openModalApp);
   };
 
   return (
     <View>
-      {installAppModal && (
+      {appModal && (
         <CustomModal
           modalTitle="Parece que esse aplicativo não está instalado no seu dispositivo. Deseja instalar?"
-          handleFirstOption={redirectToPlayStore}
-          handleCancelOption={() => setInstallAppModal(false)}
+          handleFirstOption={() => redirectToPlayStore(packageName)}
+          handleCancelOption={() => setOpenAppModal(false)}
           firstOptionTitle={'Sim'}
           showIcon={false}
         />
@@ -90,7 +61,7 @@ const Menu = (Props: Menu) => {
       <Card containerStyle={Styles.card}>
         <TouchableOpacity
           onPress={() =>
-            handleToogleApps(Props.url, Props.urlType, Props.params)
+            toogleApps(Props.url, Props.urlType, Props.params)
           }>
           {Props.iconName ? (
             <Icon

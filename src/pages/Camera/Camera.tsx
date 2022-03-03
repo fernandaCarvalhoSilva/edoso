@@ -53,9 +53,11 @@ export default function Camera() {
         style={Styles.preview}
         zoom={params.params.zoomMode ? 1 : 0}
       />
-      <TouchableOpacity style={Styles.button} onPress={() => captureHandle()}>
-        <Text style={Styles.buttonText}>Tirar Foto</Text>
-      </TouchableOpacity>
+      {!params.params.zoomMode &&
+          <TouchableOpacity style={Styles.button} onPress={() => captureHandle()}>
+            <Text style={Styles.buttonText}>Tirar Foto</Text>
+          </TouchableOpacity>
+      }
     </View>
   );
 }

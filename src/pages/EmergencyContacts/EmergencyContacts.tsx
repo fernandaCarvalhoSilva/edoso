@@ -5,68 +5,7 @@ import {Icon} from 'react-native-elements';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {StackNavigationProp} from '@react-navigation/stack';
-
-export type RootStackParamList = {
-  ShowContact: {};
-  Contacts: {isEmergency: boolean};
-};
-
-interface EmailAddress {
-  label: string;
-  email: string;
-}
-
-interface PhoneNumber {
-  label: string;
-  number: string;
-}
-
-interface PostalAddress {
-  label: string;
-  formattedAddress: string;
-  street: string;
-  pobox: string;
-  neighborhood: string;
-  city: string;
-  region: string;
-  state: string;
-  postCode: string;
-  country: string;
-}
-
-interface InstantMessageAddress {
-  username: string;
-  service: string;
-}
-
-interface Birthday {
-  day: number;
-  month: number;
-  year: number;
-}
-
-interface Contact {
-  recordID: string;
-  rawContactId: string;
-  backTitle: string;
-  company: string | null;
-  emailAddresses: EmailAddress[];
-  displayName: string;
-  familyName: string;
-  givenName: string;
-  middleName: string;
-  jobTitle: string;
-  phoneNumbers: PhoneNumber[];
-  hasThumbnail: boolean;
-  thumbnailPath: string;
-  postalAddresses: PostalAddress[];
-  prefix: string;
-  suffix: string;
-  department: string;
-  birthday: Birthday;
-  imAddresses: InstantMessageAddress[];
-  note: string;
-}
+import {Contact, RootStackParamList} from '../../utils/stack/stack';
 
 const ListEmergencyContacts = () => {
   type ParamList = {

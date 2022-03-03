@@ -9,8 +9,8 @@ export const Styles = StyleSheet.create({
     borderColor: 'gray',
     borderRadius: 6,
     marginTop: 15,
-    fontSize: 22,
     paddingLeft: 10,
+    fontSize: 22,
     backgroundColor: 'white',
   },
   disabledInput: {
@@ -115,7 +115,22 @@ export const Styles = StyleSheet.create({
   checkbox: {
     alignSelf: 'center',
   },
-  label: {
+  datePickerInput: {
+    marginLeft: 16,
+    width: '90%',
+    height: 50,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 6,
+    marginTop: 15,
+    paddingLeft: 10,
+    fontSize: 22,
+    backgroundColor: 'white',
+    paddingBottom: 10,
+    paddingTop: 10,
+  },
+  datePickerText: {
+    color: '#949494',
     fontSize: 22,
   },
 });

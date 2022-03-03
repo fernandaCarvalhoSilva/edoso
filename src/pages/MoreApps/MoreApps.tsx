@@ -16,16 +16,8 @@ import RNInstalledApplication from 'react-native-installed-application';
 import CustomModal from '../../components/CustomModal/CustomModal';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {App, RootStackParamList} from '../../utils/stack/stack';
 
-interface App {
-  packageName: string;
-  appName: string;
-  icon: ImageURISource;
-  apkDir: string;
-}
-export type RootStackParamList = {
-  Home: {app: App};
-};
 const NewApps = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [searchedApps, setSearchedApps] = useState<App[]>([]);

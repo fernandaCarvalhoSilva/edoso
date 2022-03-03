@@ -20,37 +20,55 @@ interface Android {
 }
 
 interface Actions {
-  pressAction: {id: string};
+  pressAction: { id: string };
   title: string;
 }
 export async function createTriggerNotification(
   reminderNotification: Reminder,
   selectedDateTime: Date,
-  repeatAlarm: number,
+  repeatAlarm: number
 ) {
-    const medicineTime = selectedDateTime;
-    for (var i = 1; i <= repeatAlarm; i++) {
-        if (i > 1) {
-            medicineTime.setHours(medicineTime.getHours() + repeatAlarm);
-        }
-        await notifee.createTriggerNotification(reminderNotification, {
-            type: TriggerType.TIMESTAMP,
-            timestamp: medicineTime.getTime(),
-            repeatFrequency: RepeatFrequency.DAILY,
-          })
+  const medicineTime = selectedDateTime;
+  for (var i = 1; i <= repeatAlarm; i++) {
+    if (i > 1) {
+      medicineTime.setHours(medicineTime.getHours() + repeatAlarm);
     }
+    await notifee.createTriggerNotification(reminderNotification, {
+      type: TriggerType.TIMESTAMP,
+      timestamp: medicineTime.getTime(),
+      repeatFrequency: RepeatFrequency.DAILY,
+    });
+  }
 }
 
 export async function createChannel() {
   await notifee.getChannels().then(async (channels) => {
-      if (channels.length === 0) {
-        await notifee.createChannel({
-            id: "custom-sound",
-            name: "System Sound",
-            sound: 'time_alarm',
-            importance: AndroidImportance.HIGH,
-            bypassDnd: true,
-          });
-      }
-  })
+    if (channels.length === 0) {
+      await notifee.createChannel({
+        id: "custom-sound",
+        name: "System Sound",
+        sound: "time_alarm",
+        importance: AndroidImportance.HIGH,
+        bypassDnd: true,
+      });
+    }
+  });
+}
+
+export async function getTriggerNotifications() {
+  const notifications = await notifee
+    .getTriggerNotifications()
+    .then((response) => {
+      return response;
+    });
+  return notifications;
+}
+
+export async function deleteTriggerNotifications(notificationsIds: string[]) {
+  const response = await notifee
+    .cancelTriggerNotifications(notificationsIds)
+    .then((status) => {
+      return status;
+    });
+  return response;
 }

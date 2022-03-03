@@ -14,69 +14,7 @@ import ImagePicker from '../../../components/CustomImagePicker/CustomImagePicker
 import {useRoute, RouteProp, useNavigation} from '@react-navigation/native';
 import * as Contacts from 'react-native-contacts';
 import {StackNavigationProp} from '@react-navigation/stack';
-
-interface EmailAddress {
-  label: string;
-  email: string;
-}
-
-interface PhoneNumber {
-  label: string;
-  number: string;
-}
-
-interface PostalAddress {
-  label: string;
-  formattedAddress: string;
-  street: string;
-  pobox: string;
-  neighborhood: string;
-  city: string;
-  region: string;
-  state: string;
-  postCode: string;
-  country: string;
-}
-
-interface InstantMessageAddress {
-  username: string;
-  service: string;
-}
-
-interface Birthday {
-  day: number;
-  month: number;
-  year: number;
-}
-
-interface Contact {
-  recordID: string;
-  rawContactId: string;
-  backTitle: string;
-  company: string | null;
-  emailAddresses: EmailAddress[];
-  displayName: string;
-  familyName: string;
-  givenName: string;
-  middleName: string;
-  jobTitle: string;
-  phoneNumbers: PhoneNumber[];
-  hasThumbnail: boolean;
-  thumbnailPath: string;
-  postalAddresses: PostalAddress[];
-  prefix: string;
-  suffix: string;
-  department: string;
-  birthday: Birthday;
-  imAddresses: InstantMessageAddress[];
-  note: string;
-}
-
-export type RootStackParamList = {
-  Home: {};
-  Contacts: {};
-  ShowContact: {};
-};
+import {Contact, RootStackParamList} from '../../../utils/stack/stack';
 
 const NewContact = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
