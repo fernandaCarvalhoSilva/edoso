@@ -1,0 +1,14 @@
+com/tcc/ReactNativeFlipper.java
+ com.tcc.ReactNativeFlipper
+ com.tcc.ReactNativeFlipper$1
+ com.tcc.ReactNativeFlipper$2
+ com.tcc.ReactNativeFlipper$2$1
+com/tcc/MainApplication.java
+ com.tcc.MainApplication
+ com.tcc.MainApplication$1
+com/tcc/MainActivity.java
+ com.tcc.MainActivity
+com/tcc/BuildConfig.java
+ com.tcc.BuildConfig
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList

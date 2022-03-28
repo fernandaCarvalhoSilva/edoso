@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tcc.iml" filepath="$PROJECT_DIR$/.idea/modules/tcc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/143856428/tcc.@react-native-community_blur.iml" filepath="$PROJECT_DIR$/.idea/modules/143856428/tcc.@react-native-community_blur.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1313734361/tcc.@react-native-community_cameraroll.iml" filepath="$PROJECT_DIR$/.idea/modules/-1313734361/tcc.@react-native-community_cameraroll.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/531914454/tcc.@react-native-voice_voice.iml" filepath="$PROJECT_DIR$/.idea/modules/531914454/tcc.@react-native-voice_voice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-495645460/tcc.@yz1311_react-native-intent-launcher.iml" filepath="$PROJECT_DIR$/.idea/modules/-495645460/tcc.@yz1311_react-native-intent-launcher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/tcc.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/tcc.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1708734572/tcc.react-native-android-installed-apps.iml" filepath="$PROJECT_DIR$/.idea/modules/-1708734572/tcc.react-native-android-installed-apps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1997503942/tcc.react-native-async-storage_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/1997503942/tcc.react-native-async-storage_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/628788918/tcc.react-native-camera.iml" filepath="$PROJECT_DIR$/.idea/modules/628788918/tcc.react-native-camera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/143856428/tcc.react-native-community_blur.iml" filepath="$PROJECT_DIR$/.idea/modules/143856428/tcc.react-native-community_blur.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1313734361/tcc.react-native-community_cameraroll.iml" filepath="$PROJECT_DIR$/.idea/modules/-1313734361/tcc.react-native-community_cameraroll.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/732861860/tcc.react-native-contacts.iml" filepath="$PROJECT_DIR$/.idea/modules/732861860/tcc.react-native-contacts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1985805476/tcc.react-native-date-picker.iml" filepath="$PROJECT_DIR$/.idea/modules/-1985805476/tcc.react-native-date-picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1603372565/tcc.react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/1603372565/tcc.react-native-gesture-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/866104593/tcc.react-native-image-picker.iml" filepath="$PROJECT_DIR$/.idea/modules/866104593/tcc.react-native-image-picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1989810316/tcc.react-native-installed-application.iml" filepath="$PROJECT_DIR$/.idea/modules/1989810316/tcc.react-native-installed-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-988989440/tcc.react-native-intent-launcher.iml" filepath="$PROJECT_DIR$/.idea/modules/-988989440/tcc.react-native-intent-launcher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2033981213/tcc.react-native-onesignal.iml" filepath="$PROJECT_DIR$/.idea/modules/2033981213/tcc.react-native-onesignal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1396119475/tcc.react-native-push-notification.iml" filepath="$PROJECT_DIR$/.idea/modules/-1396119475/tcc.react-native-push-notification.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-400855746/tcc.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/-400855746/tcc.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/593851472/tcc.react-native-send-intent.iml" filepath="$PROJECT_DIR$/.idea/modules/593851472/tcc.react-native-send-intent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/156218931/tcc.react-native-svg.iml" filepath="$PROJECT_DIR$/.idea/modules/156218931/tcc.react-native-svg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1803595295/tcc.react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/-1803595295/tcc.react-native-vector-icons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/531914454/tcc.react-native-voice_voice.iml" filepath="$PROJECT_DIR$/.idea/modules/531914454/tcc.react-native-voice_voice.iml" />
+    </modules>
+  </component>
+</project>
