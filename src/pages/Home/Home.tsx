@@ -31,6 +31,21 @@ export default function App() {
   const [packageName, setPackageName] = useState("");
 
   useEffect(() => {
+    const getTutorial = async () => {
+      try {
+        let data: any = await AsyncStorage.getItem('tutorial');
+        if (data == null) {
+          navigation.navigate('Tutorial', {});
+        }
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+    getTutorial();
+  }, [])
+
+  useEffect(() => {
     const loadMenuApps = async () => {
       let apps = menuApps;
       let data: any = await AsyncStorage.getItem("selectedApps");
