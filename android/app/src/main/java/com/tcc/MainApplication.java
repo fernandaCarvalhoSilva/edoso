@@ -12,7 +12,7 @@ import com.wenkesj.voice.VoicePackage;
 import com.reactnativecommunity.cameraroll.CameraRollPackage;
 import com.reactnativecommunity.cameraroll.CameraRollPackage;
 import org.reactnative.camera.RNCameraPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import com.swmansion.gesturehandler.RNGestureHandlerPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;

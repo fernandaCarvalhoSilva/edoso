@@ -30,7 +30,7 @@
     <output url="file://$MODULE_DIR$/../../../../node_modules/@react-native-community/cameraroll/android/build/intermediates/javac/debug/classes" />
     <output-test url="file://$MODULE_DIR$/../../../../node_modules/@react-native-community/cameraroll/android/build/intermediates/javac/debugUnitTest/classes" />
     <exclude-output />
-    <orderEntry type="jdk" jdkName="Android API 30 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 31 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: com.facebook.infer.annotation:infer-annotation:0.18.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.2" level="project" />

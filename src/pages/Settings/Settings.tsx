@@ -1,9 +1,10 @@
-import React from 'react';
-import {View, ScrollView, Text} from 'react-native';
-import {Styles} from './Settings.style';
-import {Icon} from 'react-native-elements';
+import React, { useEffect, useState } from 'react';
+import { View, ScrollView, Text } from 'react-native';
+import { Styles } from './Settings.style';
+import { Icon } from 'react-native-elements';
 import SendIntentAndroid from 'react-native-send-intent';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Settings = () => {
   const navigation = useNavigation();
@@ -18,6 +19,12 @@ const Settings = () => {
   const showTutorialPage = () => {
     // navigation.navigate('Tutorial');
   };
+
+  const [key, setKey] = useState<string | null>("")
+
+  useEffect(() => {
+    AsyncStorage.getItem('client-key').then((key) => setKey(key))
+  }, [])
 
   return (
     <ScrollView>
@@ -55,6 +62,18 @@ const Settings = () => {
         />
         <Text style={Styles.options} onPress={() => showTutorialPage()}>
           Ajuda
+        </Text>
+      </View>
+      <View style={Styles.list}>
+        <Icon
+          name={'key'}
+          type={'font-awesome'}
+          color="#aa5c9f"
+          iconStyle={Styles.searchIcon}
+          tvParallaxProperties={undefined}
+        />
+        <Text style={Styles.options} >
+          {key}
         </Text>
       </View>
     </ScrollView>

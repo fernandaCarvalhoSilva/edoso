@@ -1,21 +1,38 @@
-import React, {useEffect, useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {ScrollView, View, Text, Image, TouchableOpacity} from 'react-native';
-
-import {styles} from '../ListMedicine/ListMedicine.style';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Icon} from 'react-native-elements';
-import {format, parseISO} from 'date-fns';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {MedicineProps, RootStackParamList} from '../../../utils/stack/stack';
+import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { ScrollView, View, Text, Image, TouchableOpacity } from 'react-native';
+import { getMeds } from '../../../interface/ApiInterface';
+import { styles } from '../ListMedicine/ListMedicine.style';
+import { Icon } from 'react-native-elements';
+import { format, parseISO } from 'date-fns';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { MedicineProps, RootStackParamList } from '../../../utils/stack/stack';
 
 const ListMedicine = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
+  // async function loadMedicine(): Promise<Array<MedicineProps>> {
+  //   try {
+  //     const data = await AsyncStorage.getItem('Medicine');
+  //     const medicines = data ? (JSON.parse(data) as Array<MedicineProps>) : [];
+
+  //     return medicines;
+  //   } catch (error) {
+  //     throw new Error();
+  //   }
+  // }
+
   async function loadMedicine(): Promise<Array<MedicineProps>> {
     try {
-      const data = await AsyncStorage.getItem('Medicine');
-      const medicines = data ? (JSON.parse(data) as Array<MedicineProps>) : [];
+      const meds: any = await getMeds()
+
+      const medicines = meds.map((med: any) => ({
+        triggerIds: [],
+        name: med.name,
+        dateTimeNotification: Date.now(),
+        imageUri: "http://localhost:3000/public/" + med.imageName,
+        repeatAlarm: med.repeat
+      }))
 
       return medicines;
     } catch (error) {
@@ -66,7 +83,7 @@ const ListMedicine = () => {
                 onPress={() => redirectToShowMedicine(item)}>
                 {item.imageUri !== undefined && item.imageUri !== '' ? (
                   <Image
-                    source={{uri: item.imageUri}}
+                    source={{ uri: item.imageUri }}
                     style={styles.imageContainer}
                   />
                 ) : (

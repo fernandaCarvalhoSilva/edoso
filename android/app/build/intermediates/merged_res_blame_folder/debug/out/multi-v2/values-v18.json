@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/lucifer/projetos/edoso/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v18/values-v18.xml",
+            "outputFile": "C:\\Users\\Matheus W\\Desktop\\TCCCODE\\edoso\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
             "map": [
                 {
-                    "source": "/home/lucifer/.gradle/caches/transforms-3/69a29bf10bcc958f91385ad904e935b2/transformed/appcompat-1.3.0/res/values-v18/values-v18.xml",
+                    "source": "C:\\Users\\Matheus W\\.gradle\\caches\\transforms-3\\69a29bf10bcc958f91385ad904e935b2\\transformed\\appcompat-1.3.0\\res\\values-v18\\values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

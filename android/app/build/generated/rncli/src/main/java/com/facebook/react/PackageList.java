@@ -28,7 +28,7 @@ import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 // react-native-date-picker
 import com.henninghall.date_picker.DatePickerPackage;
 // react-native-gesture-handler
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import com.swmansion.gesturehandler.RNGestureHandlerPackage;
 // react-native-image-picker
 import com.imagepicker.ImagePickerPackage;
 // react-native-installed-application

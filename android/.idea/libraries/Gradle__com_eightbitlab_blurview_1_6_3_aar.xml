@@ -4,6 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/83644a27c09253d7d95ae52f85d244ae/transformed/jetified-blurview-1.6.3/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/83644a27c09253d7d95ae52f85d244ae/transformed/jetified-blurview-1.6.3/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/83644a27c09253d7d95ae52f85d244ae/transformed/jetified-blurview-1.6.3/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7246db28951044c4913064710ee5ea63/transformed/jetified-blurview-1.6.3/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/7246db28951044c4913064710ee5ea63/transformed/jetified-blurview-1.6.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7246db28951044c4913064710ee5ea63/transformed/jetified-blurview-1.6.3/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.eightbitlab/blurview/1.6.3/ae56f8d7992ed894beb5b6c01338193bfb0042ba/blurview-1.6.3-javadoc.jar!/" />
