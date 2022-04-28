@@ -113,7 +113,7 @@ const NewContact = () => {
     if (newContact.params.param === 'edit') {
       navigation.navigate('ShowContact', {selectedContact: contact});
     } else {
-      navigation.navigate('Home', {});
+      navigation.navigate('Home', {app: null});
     }
   };
 

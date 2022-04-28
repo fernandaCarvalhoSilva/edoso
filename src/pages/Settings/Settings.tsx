@@ -5,9 +5,11 @@ import { Icon } from 'react-native-elements';
 import SendIntentAndroid from 'react-native-send-intent';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../utils/stack/stack';
 
 const Settings = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const openWifiSettings = () => {
     SendIntentAndroid.openSettings('android.settings.WIFI_SETTINGS');
   };
@@ -17,7 +19,7 @@ const Settings = () => {
   };
 
   const showTutorialPage = () => {
-    // navigation.navigate('Tutorial');
+    navigation.navigate('Tutorial', {});
   };
 
   const [key, setKey] = useState<string | null>("")

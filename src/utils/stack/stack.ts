@@ -73,7 +73,7 @@ export interface App {
 }
 
 export type RootStackParamList = {
-    Home: {app: App};
+    Home: {app: App | null};
     Camera: {zoomMode: boolean};
     NewContact: {param: string; contact: Contact};
     Contacts: {isEmergency: boolean};
@@ -84,4 +84,5 @@ export type RootStackParamList = {
     ShowContact: {};
     NewMedicine: {};
     ShowMedicine: MedicineProps;
+    Tutorial: {};
 };
