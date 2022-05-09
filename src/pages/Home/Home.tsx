@@ -9,7 +9,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Menu from "../../components/Menu/Menu";
 import { handleApps, redirectToPlayStore, MenuItems, menuApps } from "../../utils/apps/MenuApps";
 import CustomModal from "../../components/CustomModal/CustomModal";
-import {RootStackParamList} from '../../utils/stack/stack';
+import { RootStackParamList } from '../../utils/stack/stack';
 
 interface NewApp {
   packageName: string;
@@ -90,14 +90,14 @@ export default function App() {
 
   const handleVoiceRecordResults = (results: string[]) => {
     const convertedResults = results.map((item) => item.toUpperCase());
-    menu.map((item) => {
+    menu.map(async (item) => {
       setPackageName(item.url);
       if (convertedResults.includes(item.text.toUpperCase())) {
         setIsRecordingVoice(!isRecordingVoice);
         if (item.urlType === 'component') {
           navigation.navigate(item.url, item.params);
         }
-        const isOpenAppModal = handleApps(item.url, item.urlType);
+        const isOpenAppModal = await handleApps(item.url, item.urlType);
         setOpenAppModal(isOpenAppModal);
       }
     });

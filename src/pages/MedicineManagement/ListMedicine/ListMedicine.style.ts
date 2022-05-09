@@ -4,12 +4,11 @@ export const styles = StyleSheet.create({
   btn: {
     color: '#000',
     padding: 20,
-    marginLeft: 10,
     marginTop: 20,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    width: '70%',
+    width: '100%',
     backgroundColor: 'purple',
     borderRadius: 10,
   },
@@ -40,11 +39,8 @@ export const styles = StyleSheet.create({
     borderColor: 'red',
   },
   imageContainer: {
-    borderWidth: 0,
-    borderRadius: 6,
-    width: 100,
-    height: 100,
-    justifyContent: 'space-between',
+    width: '100%',
+    height:100,
   },
   iconContainer: {
     backgroundColor: 'gray',
@@ -58,14 +54,19 @@ export const styles = StyleSheet.create({
     width: '100%',
     flex: 1,
     flexDirection: 'row',
+    flexWrap: 'wrap',
     marginTop: 20,
-    marginLeft: 10,
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'gray',
+    padding: 5,
+    borderRadius:5,
+    textAlign: 'center'
   },
   fontSize: {
     fontSize: 30,
-    marginLeft: 20,
-    flex: 1,
     flexWrap: 'wrap',
+    width: '100%',
+    textAlign: 'center'
   },
 });

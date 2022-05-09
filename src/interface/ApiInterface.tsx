@@ -1,10 +1,8 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { Image } from 'react-native';
 
-const [key, setKey] = useState<string | null>("1")
 
 export interface MedsInterface {
     name: string,
@@ -16,23 +14,24 @@ export interface MedsInterface {
 };
 
 
-// useEffect(() => {
-//     AsyncStorage.getItem('client-key').then((key) => setKey(key))
-// }, [])
 
 const ApiInterface = axios.create({
-    baseURL: 'https://edoso-meds-server.herokuapp.com'
+    baseURL: 'http://localhost:3000'
 })
 
-export function getMeds() {
+export async function getMeds() {
+    const key = await AsyncStorage.getItem('client-key')
+    console.log(4,key)
     return ApiInterface.get("/meds?id=" + key);
 }
 
-export function remove(id: string) {
+export function removeMeds(id: string | undefined) {
     return ApiInterface.delete("/meds?id=" + id)
 }
 
-export function create(payload: any) {
+export async function createMeds(payload: any) {
+    const key = await AsyncStorage.getItem('client-key')
+    payload.client = key;
     ApiInterface.post("/meds", payload)
 }
 

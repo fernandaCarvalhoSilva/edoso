@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../utils/stack/stack';
+import Clipboard from '@react-native-community/clipboard';
 
 const Settings = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
@@ -74,7 +75,7 @@ const Settings = () => {
           iconStyle={Styles.searchIcon}
           tvParallaxProperties={undefined}
         />
-        <Text style={Styles.options} >
+        <Text style={Styles.options} onPress={() => Clipboard.setString(key!)}>
           {key}
         </Text>
       </View>

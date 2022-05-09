@@ -15,8 +15,8 @@ export const menuApps: MenuItems[] = [
     iconName: "whatsapp",
     iconType: "font-awesome",
     text: "Whatsapp",
-    url: "com.whatsapp",
-    urlType: "intent",
+    url: `whatsapp://send?text=''&phone=5541995323581`,
+    urlType: "url",
   },
   {
     iconName: "facebook",
@@ -112,21 +112,22 @@ export const menuApps: MenuItems[] = [
   },
 ]
 
-export const handleApps = (
+export const handleApps = async (
   url: any,
   urlType: string,
-): boolean => {
+): Promise<boolean> => {
   let openAppModal = false;
   switch (urlType) {
     case "intent":
-      SendIntentAndroid.openApp(url, {}).then((result) => {
+      await SendIntentAndroid.openApp(url, {}).then((result) => {
+        console.log(3,result)
         if (!result) {
             openAppModal= true
         }
       });
       break;
     case "url":
-      Linking.openURL(url).then((result) => {
+      await Linking.openURL(url).then((result) => {
         openAppModal = true;
       }) ;
       break;

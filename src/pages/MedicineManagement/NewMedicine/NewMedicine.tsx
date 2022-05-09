@@ -12,7 +12,6 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { format } from "date-fns";
 import { Styles } from "../NewMedicine/NewMedicine.style";
@@ -25,6 +24,8 @@ import {
 } from "../../../utils/notifications/notifications";
 import { AndroidImportance, AndroidCategory } from "@notifee/react-native";
 import { MedicineProps, RootStackParamList } from "../../../utils/stack/stack";
+import { createMeds } from "../../../interface/ApiInterface";
+import RNFS from 'react-native-fs';
 
 const NewMedicine = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
@@ -49,7 +50,7 @@ const NewMedicine = () => {
   };
 
   const goBack = () => {
-    navigation.navigate("ListMedicine", {});
+    navigation.navigate("ListMedicine", {reload:true});
   };
 
   function handleInputChange(value: string) {
@@ -57,17 +58,16 @@ const NewMedicine = () => {
   }
 
   async function saveMedicine(medicine: MedicineProps): Promise<void> {
-    try {
-      const data = await AsyncStorage.getItem("Medicine");
-      const oldMedicine = data
-        ? (JSON.parse(data) as Array<MedicineProps>)
-        : [];
-      const newMedicine = [medicine];
+    try {      
+      const image64 = await RNFS.readFile(medicine.imageUri, 'base64')
 
-      await AsyncStorage.setItem(
-        "Medicine",
-        JSON.stringify([...oldMedicine, ...newMedicine])
-      );
+      await createMeds({
+        name: medicine.name,
+        time: medicine.dateTimeNotification.getHours() + ":" + medicine.dateTimeNotification.getMinutes(),
+        repeat: medicine.repeatAlarm,
+        triggerIds: medicine.triggerIds,
+        image: image64
+      })
     } catch (error) {
       console.log(error);
     }
@@ -78,9 +78,15 @@ const NewMedicine = () => {
       if (selectedDateTime !== undefined && name !== "") {
         await createChannel();
         const reminder = createReminder();
+        let date = selectedDateTime
+        if(selectedDateTime < new Date())
+        {
+          date.setDate(date.getDate() + 1);
+        }
+          
         await createTriggerNotification(
           reminder,
-          selectedDateTime,
+          date,
           repeatAlarm
         );
         const medicineIds = await getTriggersIds();
@@ -91,6 +97,7 @@ const NewMedicine = () => {
           name: name,
           imageUri: image!,
           repeatAlarm: repeatAlarm,
+          id: undefined
         });
         goBack();
       } else {

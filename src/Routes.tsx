@@ -101,7 +101,7 @@ export default function Routes() {
           name="Tutorial"
           component={TutorialPage}
           options={{ title: "Tutorial" }}
-        />
+        /> 
       </AppStack.Navigator>
     </NavigationContainer>
   );

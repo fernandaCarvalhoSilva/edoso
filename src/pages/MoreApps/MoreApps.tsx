@@ -29,6 +29,7 @@ const NewApps = () => {
     const loadInstalledApps = async () => {
       RNInstalledApplication.getNonSystemApps()
         .then((apps: React.SetStateAction<App[]>) => {
+          console.log(5,apps.length)
           setSearchedApps(apps);
           setInstalledApps(apps);
           setLoading(false);

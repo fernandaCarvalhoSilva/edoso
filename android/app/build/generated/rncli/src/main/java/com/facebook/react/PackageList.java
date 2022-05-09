@@ -19,6 +19,8 @@ import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.cmcewen.blurview.BlurViewPackage;
 // @react-native-community/cameraroll
 import com.reactnativecommunity.cameraroll.CameraRollPackage;
+// @react-native-community/clipboard
+import com.reactnativecommunity.clipboard.ClipboardPackage;
 // @react-native-voice/voice
 import com.wenkesj.voice.VoicePackage;
 // react-native-camera
@@ -27,6 +29,8 @@ import org.reactnative.camera.RNCameraPackage;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 // react-native-date-picker
 import com.henninghall.date_picker.DatePickerPackage;
+// react-native-fs
+import com.rnfs.RNFSPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.RNGestureHandlerPackage;
 // react-native-image-picker
@@ -92,10 +96,12 @@ public class PackageList {
       new AsyncStoragePackage(),
       new BlurViewPackage(),
       new CameraRollPackage(),
+      new ClipboardPackage(),
       new VoicePackage(),
       new RNCameraPackage(),
       new ReactNativeContacts(),
       new DatePickerPackage(),
+      new RNFSPackage(),
       new RNGestureHandlerPackage(),
       new ImagePickerPackage(),
       new RNInstalledApplicationPackage(),

@@ -143,7 +143,7 @@
 62-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\Matheus W\.gradle\caches\transforms-3\f140fdee6722ae5a00b8b7c77573f2f3\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:50:22-86
 63
 64    <application
-64-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:16:5-40:19
+64-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:16:5-41:19
 65        android:name="com.tcc.MainApplication"
 65-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:17:7-38
 66        android:allowBackup="false"
@@ -162,44 +162,44 @@
 73        android:theme="@style/AppTheme"
 73-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:22:7-38
 74        android:usesCleartextTraffic="true" >
-74-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\debug\AndroidManifest.xml:8:9-44
+74-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:24:7-42
 75        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
 75-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\debug\AndroidManifest.xml:11:9-86
 75-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\debug\AndroidManifest.xml:11:19-83
 76        <activity
-76-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:25:7-38:18
+76-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:26:7-39:18
 77            android:name="com.tcc.MainActivity"
-77-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:26:9-37
+77-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:27:9-37
 78            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-78-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:28:9-86
+78-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:29:9-86
 79            android:label="@string/app_name"
-79-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:27:9-41
+79-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:28:9-41
 80            android:launchMode="singleTask"
-80-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:29:9-40
+80-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:30:9-40
 81            android:showWhenLocked="true"
-81-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:31:9-38
+81-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:32:9-38
 82            android:turnScreenOn="true"
-82-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:32:9-36
+82-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:33:9-36
 83            android:windowSoftInputMode="adjustResize" >
-83-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:30:9-51
+83-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:31:9-51
 84            <intent-filter>
-84-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:33:9-37:25
+84-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:34:9-38:25
 85                <action android:name="android.intent.action.MAIN" />
-85-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:34:13-65
-85-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:34:21-62
+85-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:35:13-65
+85-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:35:21-62
 86
 87                <category android:name="android.intent.category.LAUNCHER" />
-87-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:35:13-73
-87-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:35:23-70
+87-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:36:13-73
+87-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:36:23-70
 88                <category android:name="android.intent.category.DEFAULT" />
-88-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:36:13-72
-88-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:36:23-69
+88-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:37:13-72
+88-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:37:23-69
 89            </intent-filter>
 90        </activity>
 91
 92        <service android:name="com.asterinet.react.bgactions.RNBackgroundActionsTask" />
-92-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:39:7-87
-92-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:39:16-84
+92-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:40:7-87
+92-->C:\Users\Matheus W\Desktop\TCCCODE\edoso\android\app\src\main\AndroidManifest.xml:40:16-84
 93
 94        <provider
 94-->[:notifee_react-native] C:\Users\Matheus W\Desktop\TCCCODE\edoso\node_modules\@notifee\react-native\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:40

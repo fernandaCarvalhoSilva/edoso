@@ -4,38 +4,37 @@ import { ScrollView, View, Text, Image, TouchableOpacity } from 'react-native';
 import { getMeds } from '../../../interface/ApiInterface';
 import { styles } from '../ListMedicine/ListMedicine.style';
 import { Icon } from 'react-native-elements';
-import { format, parseISO } from 'date-fns';
+import { format } from 'date-fns';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { MedicineProps, RootStackParamList } from '../../../utils/stack/stack';
 
-const ListMedicine = () => {
+const ListMedicine = (params:any) => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
-  // async function loadMedicine(): Promise<Array<MedicineProps>> {
-  //   try {
-  //     const data = await AsyncStorage.getItem('Medicine');
-  //     const medicines = data ? (JSON.parse(data) as Array<MedicineProps>) : [];
-
-  //     return medicines;
-  //   } catch (error) {
-  //     throw new Error();
-  //   }
-  // }
-
+  console.log(6,params.route.params)
   async function loadMedicine(): Promise<Array<MedicineProps>> {
     try {
       const meds: any = await getMeds()
+      console.log(3, meds.data)
 
-      const medicines = meds.map((med: any) => ({
-        triggerIds: [],
-        name: med.name,
-        dateTimeNotification: Date.now(),
-        imageUri: "http://localhost:3000/public/" + med.imageName,
-        repeatAlarm: med.repeat
-      }))
-
+      const medicines = meds.data.map((med: any) => {
+        var time = new Date();
+        time.setHours(med.time.split(":")[0]);
+        time.setMinutes(med.time.split(":")[1]);
+        return {
+          triggerIds: [],
+          name: med.name,
+          dateTimeNotification: time,
+          imageUri: "http://localhost:3000/public/" + med.imageName,
+          repeatAlarm: med.repeat,
+          id: med._id
+        }
+      }
+      )
+      console.log(1, medicines)
       return medicines;
     } catch (error) {
+      console.log(2, error)
       throw new Error();
     }
   }
@@ -50,14 +49,14 @@ const ListMedicine = () => {
     }
 
     fetchMedicines();
-  }, [medicines]);
+  }, [params.route.params]);
 
   const redirectToShowMedicine = (medicine: MedicineProps) => {
     navigation.navigate('ShowMedicine', medicine);
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={{ marginLeft: 10, marginRight: 10 }}>
       <View>
         <TouchableOpacity
           style={styles.btn}
@@ -82,10 +81,14 @@ const ListMedicine = () => {
                 style={styles.listMedicinesView}
                 onPress={() => redirectToShowMedicine(item)}>
                 {item.imageUri !== undefined && item.imageUri !== '' ? (
-                  <Image
-                    source={{ uri: item.imageUri }}
-                    style={styles.imageContainer}
-                  />
+                  <View
+                    style={styles.imageContainer}>
+                    <Image
+                      resizeMode="contain"
+                      style={{height:100}}
+                      source={{ uri: item.imageUri }}
+                    />
+                  </View>
                 ) : (
                   <View style={styles.iconContainer}>
                     <Icon
@@ -97,13 +100,10 @@ const ListMedicine = () => {
                     />
                   </View>
                 )}
-                <Text style={styles.fontSize}>{item.name}</Text>
-                <Text style={styles.fontSize}>
-                  {format(
-                    parseISO(item.dateTimeNotification.toString()),
+                <Text style={styles.fontSize}>{item.name} {format(
+                    item.dateTimeNotification,
                     'HH:mm',
-                  )}
-                </Text>
+                  )}</Text>      
               </TouchableOpacity>
             );
           })

@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, Image, TouchableHighlight} from 'react-native';
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
-import {Styles} from './ShowMedicine.style';
-import {Icon} from 'react-native-elements';
-import {format, parseISO} from 'date-fns';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, TouchableHighlight } from 'react-native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { Styles } from './ShowMedicine.style';
+import { Icon } from 'react-native-elements';
+import { format } from 'date-fns';
 import { MedicineProps, RootStackParamList } from '../../../utils/stack/stack';
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StackNavigationProp } from '@react-navigation/stack';
 import CustomModal from '../../../components/CustomModal/CustomModal';
 import { deleteTriggerNotifications } from '../../../utils/notifications/notifications';
+import { removeMeds } from '../../../interface/ApiInterface';
 
 const ShowMedicine = () => {
   type ParamList = {
@@ -28,24 +28,13 @@ const ShowMedicine = () => {
     loadStorageMedicineName();
   }, [params.params]);
 
-  const deleteMedicine = async ()  => {
+  const deleteMedicine = async () => {
     try {
       if (selectedMedicine) {
         const triggerStatus = await deleteTriggerNotifications(selectedMedicine.triggerIds);
         console.log(triggerStatus);
-        const data = await AsyncStorage.getItem("Medicine");
-        const medicines = data
-          ? (JSON.parse(data) as Array<MedicineProps>)
-          : [];
-  
-        const filteredMedicines = medicines.filter(med => med.name !== selectedMedicine?.name)
-  
-        await AsyncStorage.setItem(
-          "Medicine",
-          JSON.stringify([...filteredMedicines])
-        ).then(() => {
-          goBack();
-        })
+        await removeMeds(params.params.id);
+        goBack();
       }
     } catch (error) {
       console.log(error);
@@ -53,7 +42,7 @@ const ShowMedicine = () => {
   }
 
   const goBack = () => {
-    navigation.navigate('ListMedicine', {});
+    navigation.navigate('ListMedicine', {reload:true});
   }
 
   const handleModal = () => {
@@ -68,15 +57,15 @@ const ShowMedicine = () => {
   return (
     <View style={Styles.mainView}>
       <View style={Styles.customModalView}>
-          {isOpenDeleteModal && (
-            <CustomModal
-              modalTitle="Tem certeza que deseja excluir esse lembrete ?"
-              handleFirstOption={() => deleteMedicine()}
-              handleCancelOption={toogleDeleteModal}
-              firstOptionTitle={'Excluir'}
-              showIcon={true}
-            />
-          )}
+        {isOpenDeleteModal && (
+          <CustomModal
+            modalTitle="Tem certeza que deseja excluir esse lembrete ?"
+            handleFirstOption={() => deleteMedicine()}
+            handleCancelOption={toogleDeleteModal}
+            firstOptionTitle={'Excluir'}
+            showIcon={true}
+          />
+        )}
       </View>
       {!selectedMedicine ? (
         <Text style={Styles.label}>{'Carregando...'} </Text>
@@ -84,7 +73,7 @@ const ShowMedicine = () => {
         <>
           {selectedMedicine.imageUri !== '' ? (
             <Image
-              source={{uri: selectedMedicine.imageUri}}
+              source={{ uri: selectedMedicine.imageUri }}
               style={Styles.imageContainer}
             />
           ) : (
@@ -106,8 +95,7 @@ const ShowMedicine = () => {
             <View style={Styles.childTextView}>
               <Text style={Styles.label}>{'Horário: '}</Text>
               <Text style={Styles.text}>
-                {format(
-                  parseISO(selectedMedicine.dateTimeNotification.toString()),
+                {format(selectedMedicine.dateTimeNotification,
                   'HH:mm',
                 )}
               </Text>
@@ -121,16 +109,16 @@ const ShowMedicine = () => {
             </View>
           </View>
           <TouchableHighlight style={Styles.deleteButton} onPress={toogleDeleteModal}>
-              <View style={Styles.deleteButtonView}>
-                <Text style={Styles.deleteButtonText}>Deletar</Text>
-                <Icon
-                  name={'trash'}
-                  type={'font-awesome'}
-                  color="white"
-                  tvParallaxProperties={undefined}
-                />
-              </View>
-            </TouchableHighlight>
+            <View style={Styles.deleteButtonView}>
+              <Text style={Styles.deleteButtonText}>Deletar</Text>
+              <Icon
+                name={'trash'}
+                type={'font-awesome'}
+                color="white"
+                tvParallaxProperties={undefined}
+              />
+            </View>
+          </TouchableHighlight>
         </>
       )}
     </View>

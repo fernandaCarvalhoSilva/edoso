@@ -63,6 +63,7 @@ export  interface MedicineProps {
     dateTimeNotification: Date;
     imageUri: string;
     repeatAlarm: number | undefined;
+    id: string | undefined;
 }
 
 export interface App {
@@ -78,7 +79,7 @@ export type RootStackParamList = {
     NewContact: {param: string; contact: Contact};
     Contacts: {isEmergency: boolean};
     MoreApps: {};
-    ListMedicine: {};
+    ListMedicine: {reload:boolean};
     EmergencyContacts: {contact: Contact};
     Settings: {};
     ShowContact: {};

@@ -26,15 +26,16 @@ interface Menu {
 }
 
 const Menu = (Props: Menu) => {
-  const [appModal, setOpenAppModal] = useState(false);
+  const [openModalApp, setOpenAppModal] = useState(false);
   const [packageName, setPackageName] = useState('');
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
-  const toogleApps = (
+  const toogleApps = async (
     url: any,
     urlType: string,
     componentParams: Object | undefined,
   ) => {
+    console.log(1,url,urlType,componentParams)
     setPackageName(url);
     if (urlType === 'voiceRecord') {
       Props.toogleVoiceRecord();
@@ -43,13 +44,14 @@ const Menu = (Props: Menu) => {
     if (urlType === 'component') {
       navigation.navigate(url, componentParams);
     }
-    const openModalApp = handleApps(url, urlType);
-    setOpenAppModal(openModalApp);
+    const open = await handleApps(url, urlType);
+    console.log(2,open)
+    setOpenAppModal(open);
   };
 
   return (
     <View>
-      {appModal && (
+      {openModalApp && (
         <CustomModal
           modalTitle="Parece que esse aplicativo não está instalado no seu dispositivo. Deseja instalar?"
           handleFirstOption={() => redirectToPlayStore(packageName)}
