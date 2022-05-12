@@ -15,15 +15,15 @@ export const menuApps: MenuItems[] = [
     iconName: "whatsapp",
     iconType: "font-awesome",
     text: "Whatsapp",
-    url: `whatsapp://send?text=''&phone=5541995323581`,
-    urlType: "url",
+    url: 'com.whatsapp',
+    urlType: 'intent',
   },
   {
     iconName: "facebook",
     iconType: "font-awesome",
     text: "Facebook",
-    url: "com.facebook.katana",
-    urlType: "intent",
+    url: "https://www.facebook.com/",
+    urlType: "url",
   },
   {
     iconName: "phone",
@@ -128,7 +128,7 @@ export const handleApps = async (
       break;
     case "url":
       await Linking.openURL(url).then((result) => {
-        openAppModal = true;
+        // openAppModal = true;
       }) ;
       break;
     default:

@@ -35,6 +35,8 @@ const CustomImagePicker = (Props: CustomImagePickerProps) => {
         onCancel={Props.toogleDateTimePicker}
         confirmText="Finalizar"
         cancelText="Cancelar"
+        locale="pt-BR"
+        is24hourSource="device"
         title={Props.title}
       />
     </>

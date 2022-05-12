@@ -71,7 +71,10 @@ const NewContact = () => {
     };
 
     Contacts.openContactForm(newPerson).then(async result => {
-      console.log(result);
+      setContact(undefined);
+      setName("");
+      setPhone("");
+      setHasImage(false);
     });
   };
 

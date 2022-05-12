@@ -35,7 +35,6 @@ const Menu = (Props: Menu) => {
     urlType: string,
     componentParams: Object | undefined,
   ) => {
-    console.log(1,url,urlType,componentParams)
     setPackageName(url);
     if (urlType === 'voiceRecord') {
       Props.toogleVoiceRecord();
@@ -45,7 +44,6 @@ const Menu = (Props: Menu) => {
       navigation.navigate(url, componentParams);
     }
     const open = await handleApps(url, urlType);
-    console.log(2,open)
     setOpenAppModal(open);
   };
 

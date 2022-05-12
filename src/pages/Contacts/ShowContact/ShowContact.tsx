@@ -122,11 +122,11 @@ const ShowContact = () => {
         </View>
         <View>
           <View style={Styles.mainView}>
-            {hasImage ? (
+            {/* {hasImage ? (
               <TouchableOpacity onPress={toogleImagePicker}>
                 <Image source={{uri: image}} style={Styles.imageContainer} />
               </TouchableOpacity>
-            ) : (
+            ) : ( */}
               <TouchableOpacity onPress={toogleImagePicker}>
                 <View style={Styles.iconContainer}>
                   <Icon
@@ -138,7 +138,7 @@ const ShowContact = () => {
                   />
                 </View>
               </TouchableOpacity>
-            )}
+            {/* )} */}
 
             <View style={Styles.topbarView}>
               <View style={Styles.topbar}>

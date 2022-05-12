@@ -14,10 +14,12 @@ import EmergencyContacts from "./pages/EmergencyContacts/EmergencyContacts";
 import Settings from "./pages/Settings/Settings";
 import TutorialPage from "./pages/Settings/Tutorial/TutorialPage";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { LogBox } from 'react-native';
 
 const AppStack = createStackNavigator();
 
 export default function Routes() {
+  LogBox.ignoreAllLogs();
   function makeid() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

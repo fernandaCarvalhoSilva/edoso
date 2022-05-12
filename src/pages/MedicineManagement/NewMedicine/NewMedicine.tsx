@@ -78,7 +78,7 @@ const NewMedicine = () => {
       if (selectedDateTime !== undefined && name !== "") {
         await createChannel();
         const reminder = createReminder();
-        let date = selectedDateTime
+        let date = new Date(selectedDateTime.valueOf())
         if(selectedDateTime < new Date())
         {
           date.setDate(date.getDate() + 1);
@@ -90,7 +90,6 @@ const NewMedicine = () => {
           repeatAlarm
         );
         const medicineIds = await getTriggersIds();
-
         await saveMedicine({
           triggerIds: medicineIds,
           dateTimeNotification: selectedDateTime,
