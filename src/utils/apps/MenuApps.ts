@@ -42,7 +42,7 @@ export const menuApps: MenuItems[] = [
   {
     iconName: "camera",
     iconType: "font-awesome",
-    text: "Camera",
+    text: "Câmera",
     url: "Camera",
     urlType: "component",
     params: { zoomMode: false },

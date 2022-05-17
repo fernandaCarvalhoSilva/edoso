@@ -47,12 +47,12 @@ export default function Routes() {
         <AppStack.Screen
           name="Home"
           component={Home}
-          options={{ title: "E-Doso" }}
+          options={{ title: "E-doso" }}
         />
         <AppStack.Screen
           name="Camera"
           component={Camera}
-          options={{ title: "Camera" }}
+          options={{ title: "Câmera" }}
         />
         <AppStack.Screen
           name="NewContact"
@@ -92,7 +92,7 @@ export default function Routes() {
         <AppStack.Screen
           name="EmergencyContacts"
           component={EmergencyContacts}
-          options={{ title: "Contatos de emergência" }}
+          options={{ title: "Emergência" }}
         />
         <AppStack.Screen
           name="Settings"
